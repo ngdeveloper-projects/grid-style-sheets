@@ -1,0 +1,93 @@
+<html>
+<head>
+<script src="https://s3-us-west-2.amazonaws.com/cdn.thegrid.io/gss/v2.0.0/v2.0.0/gss.js"></script>
+ <script type="text/javascript">
+  window.engine = new GSS(document);
+</script>
+<style type="text/gss">
+ #author[left] == section[left];
+ section {
+   width: == ::window[width] / 2;
+   height: == ::window[height];
+   center: == ::window[center];
+  
+   @if &[width] <= 400 {
+       article {
+	   // ^[top] - top of the body when the width is less than 400 [eg:mobile devices] 
+	   // here top of the section, since this styles are inside the section tag
+	:first[top] == ^[top];
+	bottom: == :next[top];
+         left: == ^[left];
+		// -10 will reduce the width by 10 only in mobile devices view
+         width: == ^[width]-10;
+         height: == ^[height] / 2;
+		  
+       }
+   }
+   @else {
+     article {
+	 // ^[width] -- width of the body / width of the body container [eg: container class inside body]
+	 	   // here width of the section, since this styles are inside the section tag
+       width: == ^[width] / 2; 
+	   // ^[height] -- height of the body / height of the body container [eg: container class inside body]
+	     // here height of the section, since this styles are inside the section tag
+       height: == ^[height];
+       top: == :next[top];
+       right: == :next[left];    
+     }          
+  }
+}
+               
+</style>
+<style type="text/css">
+
+body {
+  font-family: "museo-sans",sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  color: white;
+}
+
+section {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 20px 0; 
+  background-color: #ccc;
+}
+
+article {
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+#blog {
+  background-color: #7DB4B5;
+}
+
+#author {
+  background-color: #E0EFF1;
+}
+</style>
+</head>
+<body>
+ <section>
+   <article id="blog">
+     <h2>Javadomain.in</h2>
+     <h4>Javadomain.in is a top technology blog, you can read about Java, PHP, jQuery, Ajax etc. <br/>You can also find many readymade scripts.</h4>
+   </article>
+   <article id="author">
+     <h3>Naveen kumar Gunasekaran</h3>
+     <h4>I am a blogger, innovator, developer and enterpreneur. </br>Founder of Javadomain.in.</h4>
+   </article>
+    <div style="display:block;color:green;margin-left:350px;text-align:left;font-size:18px;">
+ 1. If you see this page in desktops/laptops blog and author informations will be next to each other [first blog info, second author info].
+ <br/> <br/>
+ 2. If you see this page in mobile devices then blog and author informations will be at top and bottom [blog info at top and author info at bottom].
+  <br/> <br/>
+ 3. Responsive design using GSS [Grid Style Sheets (advanced CCSS - Constraint CSS) <a href="http://gridstylesheets.org/guides/ccss/">Grid Style Sheets</a>].
+   <br/> <br/>
+ 4. We have made the design responsive using the if/else GSS conditional statements. [<a href="http://gridstylesheets.org/guides/ifelse/">GSS if/else</a>]
+</div>
+ </section>
+</body>
+</html>
